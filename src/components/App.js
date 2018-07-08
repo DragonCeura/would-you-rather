@@ -1,21 +1,44 @@
-import React, { Component } from 'react';
-import logo from '../images/logo.svg';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { handleInitialData } from '../actions/shared';
+import Dashboard from './Dashboard';
+import LoadingBar from 'react-redux-loading';
+import NewQuestion from './NewQuestion';
+import QuestionPage from './QuestionPage';
+import Nav from './Nav';
 import '../styles/App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          <div className='container'>
+            <Nav />
+            {this.props.loading === true
+              ? null
+              : <div>
+                  <Route path='/' exact component={Dashboard} />
+                  <Route path='/question/:id' component={QuestionPage} />
+                  <Route path='/new_question' component={NewQuestion} />
+                </div>
+            }
+          </div>
+        </Fragment>
+      </Router>
     );
   }
 }
 
-export default App;
+function mapStateToProps ({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App);
