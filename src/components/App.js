@@ -1,12 +1,19 @@
+// Libraries
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { handleInitialData } from '../actions/shared';
-import Dashboard from './Dashboard';
 import LoadingBar from 'react-redux-loading';
+
+// Components
+import Nav from './Nav';
+import Login from './Login';
+import Dashboard from './Dashboard';
 import NewQuestion from './NewQuestion';
 import QuestionPage from './QuestionPage';
-import Nav from './Nav';
+import Leaderboard from './Leaderboard';
+
+import { handleInitialData } from '../actions/shared';
+
 import '../styles/App.css';
 
 class App extends Component {
@@ -26,6 +33,7 @@ class App extends Component {
                   <Route path='/' exact component={Dashboard} />
                   <Route path='/question/:id' component={QuestionPage} />
                   <Route path='/new_question' component={NewQuestion} />
+                  <Route path='/leaderboard' component={Leaderboard} />
                 </div>
             }
           </div>
@@ -37,7 +45,8 @@ class App extends Component {
 
 function mapStateToProps ({ authedUser }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    authedUser,
   }
 }
 

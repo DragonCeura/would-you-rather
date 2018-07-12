@@ -5,23 +5,6 @@ export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const ANSWER_QUESTION = 'ANSWER_QUESTION';
 
-/* Example question object:
-{
-  id: '8xf0y6ziyjabvozdd253nd',
-  author: 'sarahedo',
-  timestamp: 1467166872634,
-  optionOne: {
-    votes: ['sarahedo'],
-    text: 'have horrible short term memory',
-  },
-  optionTwo: {
-    votes: [],
-    text: 'have horrible long term memory'
-  }
-}
-*/
-
-
 function addQuestion (question) {
   return {
     type: ADD_QUESTION,
@@ -55,12 +38,12 @@ export function receiveQuestions (questions) {
   }
 }
 
-function answerQuestion ({ id, authedUser }) {
+function answerQuestion ({ authedUser, qid, answer }) {
   return {
     type: ANSWER_QUESTION,
-    id,
     authedUser,
-    // Other question attributes
+    qid,
+    answer,
   }
 }
 
