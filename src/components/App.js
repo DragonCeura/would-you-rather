@@ -21,6 +21,7 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
   render() {
+    console.log(this.props);
     return (
       <Router>
         <Fragment>
@@ -31,9 +32,10 @@ class App extends Component {
               ? null
               : <div>
                   <Route path='/' exact component={Dashboard} />
-                  <Route path='/question/:id' component={QuestionPage} />
-                  <Route path='/new_question' component={NewQuestion} />
+                  <Route path='/question/:question_id' component={QuestionPage} />
+                  <Route path='/add' component={NewQuestion} />
                   <Route path='/leaderboard' component={Leaderboard} />
+                  <Route path='/login' exact component={Login} />
                 </div>
             }
           </div>
@@ -43,9 +45,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ authedUser, users, questions }) {
   return {
-    loading: authedUser === null,
+    loading: users === null || questions === null,
     authedUser,
   }
 }
