@@ -13,7 +13,6 @@ class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    // TODO: Update authedUser to selected user
     const { selectedUser } = this.state;
     const { dispatch, authedUser } = this.props;
     dispatch(setAuthedUser(selectedUser));

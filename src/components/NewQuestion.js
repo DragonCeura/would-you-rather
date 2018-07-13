@@ -4,13 +4,14 @@ import { checkForUser } from '../utils/Utils';
 
 class NewQuestion extends Component {
   render() {
-    let redirectToLogin = checkForUser(this.props.authedUser);
+    const { authedUser, users } = this.props;
+    let redirectToLogin = checkForUser(authedUser);
     if (redirectToLogin !== null) {
       return redirectToLogin;
     }
     return (
-      <div>
-        New Question
+      <div className='center'>
+        New Question to be created by {users[authedUser].name}
       </div>
     );
   }
