@@ -6,6 +6,7 @@ import LoadingBar from 'react-redux-loading';
 
 // Components
 import Nav from './Nav';
+import PrivateRoute from './PrivateRoute';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import NewQuestion from './NewQuestion';
@@ -32,11 +33,11 @@ class App extends Component {
             {this.props.loading === true
               ? null
               : <Switch>
-                  <Route exact path='/' component={Dashboard} />
-                  <Route path='/question/:question_id' component={QuestionPage} />
-                  <Route path='/add' component={NewQuestion} />
-                  <Route path='/leaderboard' component={Leaderboard} />
                   <Route path='/login' exact component={Login} />
+                  <PrivateRoute exact path='/' component={Dashboard} />
+                  <PrivateRoute path='/question/:question_id' component={QuestionPage} />
+                  <PrivateRoute path='/add' component={NewQuestion} />
+                  <PrivateRoute path='/leaderboard' component={Leaderboard} />
                   <Route component={NoMatch} />
                 </Switch>
             }

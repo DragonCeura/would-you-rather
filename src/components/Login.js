@@ -14,12 +14,12 @@ class Login extends Component {
     e.preventDefault();
 
     const { selectedUser } = this.state;
-    const { dispatch, authedUser } = this.props;
+    const { dispatch } = this.props;
     dispatch(setAuthedUser(selectedUser));
 
     this.setState(() => ({
       selectedUser,
-      toHome: authedUser ? false : true,
+      toHome: selectedUser === null ? false : true,
     }))
   }
 
@@ -34,7 +34,6 @@ class Login extends Component {
     const { selectedUser, toHome } = this.state;
     const { users } = this.props;
 
-    console.log("Login state: ", this.state)
     if (toHome === true) {
       return <Redirect to='/' />
     }
