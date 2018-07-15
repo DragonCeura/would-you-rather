@@ -32,7 +32,7 @@ class Login extends Component {
 
   render() {
     const { selectedUser, toHome } = this.state;
-    const { users } = this.props;
+    const { authedUser, users } = this.props;
 
     if (toHome === true) {
       return <Redirect to='/' />
@@ -40,7 +40,9 @@ class Login extends Component {
 
     return (
       <div>
-        <h3 className='center'>The Login Screen</h3>
+        {(authedUser === '' || authedUser === null)
+          ? <h3 className='center'>You are not currently logged in.</h3>
+          : <h3 className='center'>Currently logged in as {authedUser}</h3>}
         <form className='' onSubmit={this.handleSubmit}>
           <select value={selectedUser} onChange={this.handleSelectChange}>
             <option value='' disabled>Select user login</option>
