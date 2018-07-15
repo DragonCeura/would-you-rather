@@ -48,9 +48,10 @@ class App extends Component {
   }
 }
 
+// This assumes that there will always be at least one user initially available
 function mapStateToProps ({ authedUser, users, questions }) {
   return {
-    loading: users === null || questions === null,
+    loading: Object.values(users).length === 0 || Object.values(questions).length === 0,
     authedUser,
   }
 }

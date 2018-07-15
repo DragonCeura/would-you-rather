@@ -9,7 +9,7 @@ export function checkForUser(authedUser) {
   return null;
 }
 
-function userAnsweredQuestion(user, question) {
+export function userAnsweredQuestion(user, question) {
   return question.optionOne.votes.includes(user) || question.optionTwo.votes.includes(user);
 }
 
