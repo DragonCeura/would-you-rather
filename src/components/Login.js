@@ -38,8 +38,6 @@ class Login extends Component {
       return <Redirect to='/' />
     }
 
-    console.log('users:', users);
-
     return (
       <div>
         {(authedUser === '' || authedUser === null)

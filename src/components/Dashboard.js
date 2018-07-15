@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { categorizeQuestions } from '../utils/Utils';
+
+import QuestionsList from './QuestionsList';
 
 class Dashboard extends Component {
   render() {
@@ -14,7 +17,9 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h3 className='center'>Dashboard for {users[authedUser].name}</h3>
+        <h3 className='center'>{users[authedUser].name}, would you rather...</h3>
+        <QuestionsList questionsArray={answered} header="Answered Questions"/>
+        <QuestionsList questionsArray={unanswered} header="Unanswered Questions"/>
       </div>
     );
   }

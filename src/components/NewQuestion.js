@@ -7,7 +7,7 @@ class NewQuestion extends Component {
 
     return (
       <div className='center'>
-        New Question to be created by {users[authedUser].name}
+        <h3>New Question to be created by {users[authedUser].name}</h3>
       </div>
     );
   }
