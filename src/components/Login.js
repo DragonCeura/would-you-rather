@@ -32,21 +32,23 @@ class Login extends Component {
 
   render() {
     const { selectedUser, toHome } = this.state;
-    const { authedUser, users } = this.props;
+    const { authedUser, users, usersArray } = this.props;
 
     if (toHome === true) {
       return <Redirect to='/' />
     }
 
+    console.log('users:', users);
+
     return (
       <div>
         {(authedUser === '' || authedUser === null)
           ? <h3 className='center'>You are not currently logged in.</h3>
-          : <h3 className='center'>Currently logged in as {authedUser}</h3>}
+          : <h3 className='center'>Currently logged in as {users[authedUser].name}</h3>}
         <form className='' onSubmit={this.handleSubmit}>
           <select value={selectedUser} onChange={this.handleSelectChange}>
             <option value='' disabled>Select user login</option>
-            {users && users.length !== 0 && users.map((user) => (
+            {usersArray && usersArray.length !== 0 && usersArray.map((user) => (
               <option key={user.id} value={user.id}>{user.name}</option>
             ))}
           </select>
@@ -65,7 +67,8 @@ class Login extends Component {
 function mapStateToProps ({ authedUser, users }) {
   return {
     authedUser,
-    users: Object.values(users),
+    users,
+    usersArray: Object.values(users),
   }
 }
 
