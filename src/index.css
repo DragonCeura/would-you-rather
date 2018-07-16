@@ -104,6 +104,11 @@ li {
   font-weight: bold;
 }
 
+.question-form {
+  display: flex;
+  flex-direction: column;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;

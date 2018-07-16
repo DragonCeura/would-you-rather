@@ -18,8 +18,8 @@ class Dashboard extends Component {
     return (
       <div className='container'>
         <h3 className='center'>{users[authedUser].name}, would you rather...</h3>
-        <QuestionsList questionsArray={answered} header="Answered Questions"/>
-        <QuestionsList questionsArray={unanswered} header="Unanswered Questions"/>
+        <QuestionsList questionsArray={answered} header="Answered Questions" />
+        <QuestionsList questionsArray={unanswered} header="Unanswered Questions" />
       </div>
     );
   }

@@ -31,10 +31,13 @@ export function formatQuestion(question, users, authedUser) {
   const { answers } = users[authedUser];
   const { avatarURL } = users[author];
   return {
-    author,
+    id,
+    author: users[author].name,
     avatar: avatarURL,
     optionOne: optionOne.text,
+    optionOneVotes: optionOne.votes.length,
     optionTwo: optionTwo.text,
+    optionTwoVotes: optionTwo.votes.length,
     answer: answers[id]
       ? answers[id]
       : null,
