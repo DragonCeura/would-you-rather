@@ -23,8 +23,8 @@ class QuestionStats extends Component {
           <div>{optionTwo}</div>
           <h5>You Answered: {question[answer]}</h5>
           <div className='question-stats'>
-            <div>"{optionOne}" received {optionOneVotes} of {totalVotes} votes</div>
-            <div>"{optionTwo}" received {optionTwoVotes} of {totalVotes} votes</div>
+            <div>"{optionOne}" received {optionOneVotes} of {totalVotes} votes ({(optionOneVotes / totalVotes) * 100}%)</div>
+            <div>"{optionTwo}" received {optionTwoVotes} of {totalVotes} votes ({(optionTwoVotes / totalVotes) * 100}%)</div>
           </div>
         </div>
       </div>
