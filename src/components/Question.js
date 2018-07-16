@@ -23,6 +23,7 @@ class Question extends Component {
           <div>{optionTwo}</div>
           {answer ? <h5>Answered: {question[answer]}</h5> : null}
         </div>
+      </Link>
     )
   }
 }
