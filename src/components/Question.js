@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom'
 
 import { formatQuestion } from '../utils/Utils';
 
 class Question extends Component {
   render() {
     const { question } = this.props;
-
-    const { avatar, author, id, optionOne, optionTwo, answer } = question;
-
+    
     return(
-      <Link to={`/question/${id}`} className='question'>
-        <img
-          src={avatar}
-          alt={`Avatar of ${author}`}
-          className='avatar'
-        />
-        <div className='question-info'>
-          <div>{optionOne}</div>
-          <div>or</div>
-          <div>{optionTwo}</div>
-          {answer ? <h5>Answered: {question[answer]}</h5> : null}
-        </div>
+      <div className='question'>
+        <div>{question.optionOne}</div>
+        <div>or</div>
+        <div>{question.optionTwo}</div>
+        {question[question.answer] ? <h5>Answered: {question[question.answer]}</h5> : null}
+      </div>
     )
   }
 }
@@ -38,4 +29,4 @@ function mapStateToProps({ authedUser, users, questions }, { question_id }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Question));
+export default connect(mapStateToProps)(Question);
