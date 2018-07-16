@@ -8,8 +8,8 @@ class QuestionsList extends Component {
     const { questionsArray, header } = this.props;
 
     return(
-      <div>
-        <h3>{header}</h3>
+      <div className='questionlist'>
+        <h4 className='questionlist-header'>{header}</h4>
         {questionsArray.map((question) => (
           <Question key={question.id} question_id={question.id} />
         ))}

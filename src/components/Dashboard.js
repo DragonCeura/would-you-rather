@@ -16,7 +16,7 @@ class Dashboard extends Component {
     console.log('Unanswered questions:', unanswered);
 
     return (
-      <div>
+      <div className='container'>
         <h3 className='center'>{users[authedUser].name}, would you rather...</h3>
         <QuestionsList questionsArray={answered} header="Answered Questions"/>
         <QuestionsList questionsArray={unanswered} header="Unanswered Questions"/>
