@@ -2,12 +2,39 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class NewQuestion extends Component {
+  state = {
+    optionOne: '',
+    optionTwo: '',
+    toHome: false,
+  }
+  handleChange = (e) => {
+    e.preventDefault();
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+  }
   render() {
-    const { authedUser, users } = this.props;
+    const { optionOne, optionTwo } = this.state;
 
     return (
       <div className='center'>
-        <h3>New Question to be created by {users[authedUser].name}</h3>
+        <h3>Would You Rather</h3>
+        <form className='new-question-form' onSubmit={this.handleSubmit}>
+          <label>
+            Option One:
+            <input type='text' name='optionOne' />
+          </label>
+          <label>
+            Option Two:
+            <input type='text' name='optionTwo' />
+          </label>
+          <button
+            className='btn'
+            type='submit'
+            disabled={optionOne === '' && optionTwo === ''}>
+            Add Question
+          </button>
+        </form>
       </div>
     );
   }
