@@ -43,8 +43,12 @@ class Login extends Component {
         {(authedUser === '' || authedUser === null)
           ? <h3 className='center'>You are not currently logged in.</h3>
           : <h3 className='center'>Currently logged in as {users[authedUser].name}</h3>}
-        <form className='' onSubmit={this.handleSubmit}>
-          <select value={selectedUser} onChange={this.handleSelectChange}>
+        <form className='login-form' onSubmit={this.handleSubmit}>
+          <select
+            className='login-select'
+            value={selectedUser}
+            onChange={this.handleSelectChange}
+            >
             <option value='' disabled>Select user login</option>
             {usersArray && usersArray.length !== 0 && usersArray.map((user) => (
               <option key={user.id} value={user.id}>{user.name}</option>
