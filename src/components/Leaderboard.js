@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { userScore } from '../utils/Utils';
+
 import LeaderboardEntry from './LeaderboardEntry';
 
 class Leaderboard extends Component {
@@ -23,7 +25,7 @@ class Leaderboard extends Component {
 function mapStateToProps ({ authedUser, users, questions }) {
   return {
     authedUser,
-    usersArray: Object.values(users),
+    usersArray: Object.values(users).sort((a, b) => userScore(b) - userScore(a)),
     questions,
   }
 }
