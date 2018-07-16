@@ -2,17 +2,45 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { userAnsweredQuestion, formatQuestion } from '../utils/Utils';
+import { handleAnswerQuestion } from '../actions/shared';
+import { formatQuestion } from '../utils/Utils';
+
+import QuestionStats from './QuestionStats';
 
 class QuestionPage extends Component {
+  state = {
+    selectedAnswer: '',
+  }
+
+  handleChange = (e) => {
+    const answer = e.target.value;
+
+    this.setState({
+      selectedAnswer: answer,
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { selectedAnswer } = this.state;
+    const { dispatch, authedUser, question_id } = this.props;
+
+    const info = {
+      authedUser,
+      qid: question_id,
+      answer: selectedAnswer,
+    }
+
+    dispatch(handleAnswerQuestion(info));
+  }
+
   render() {
-    console.log(this.props);
+    const { selectedAnswer } = this.state;
 
-    const { authedUser, question, question_id } = this.props;
+    const { question, question_id } = this.props;
 
-    const { avatar, author, id, optionOne, optionOneVotes, optionTwo, optionTwoVotes, answer } = question;
-
-    const totalVotes = optionOneVotes + optionTwoVotes;
+    const { avatar, author, optionOne, optionTwo, answer } = question;
 
     if (answer === null) {
       return (
@@ -23,38 +51,37 @@ class QuestionPage extends Component {
             alt={`Avatar of ${author}`}
             className='avatar'
           />
-          <form className='question-form'>
+          <form className='question-form' onSubmit={this.handleSubmit}>
             <label>
-              <input type='radio' name={`${question_id}_answer`} value={optionOne} />
+              <input
+                type='radio'
+                name={`${question_id}_answer`}
+                value='optionOne'
+                onChange={this.handleChange}
+              />
               {optionOne}
             </label>
             <label>
-              <input type='radio' name={`${question_id}_answer`} value={optionTwo} />
+              <input
+                type='radio'
+                name={`${question_id}_answer`}
+                value='optionTwo'
+                onChange={this.handleChange}
+              />
               {optionTwo}
             </label>
+            <button
+              className='btn'
+              type='submit'
+              disabled={selectedAnswer===''}>
+              Submit
+            </button>
           </form>
         </div>
       );
     } else {
       return (
-        <div className='container'>
-          <h3>Asked by {author}</h3>
-          <img
-            src={avatar}
-            alt={`Avatar of ${author}`}
-            className='avatar'
-          />
-          <div className='question-info'>
-            <div>{optionOne}</div>
-            <div>or</div>
-            <div>{optionTwo}</div>
-            <h5>You Answered: {question[answer]}</h5>
-            <div className='question-stats'>
-              <div>"{optionOne}" received {optionOneVotes} of {totalVotes} votes</div>
-              <div>"{optionTwo}" received {optionTwoVotes} of {totalVotes} votes</div>
-            </div>
-          </div>
-        </div>
+        <QuestionStats question_id={question_id}/>
       )
     }
   }

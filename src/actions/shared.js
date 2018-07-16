@@ -1,8 +1,10 @@
-import { getInitialData } from '../utils/api';
-import { receiveUsers } from '../actions/users';
-import { setAuthedUser } from '../actions/authedUser';
-import { receiveQuestions } from '../actions/questions';
 import { showLoading, hideLoading } from 'react-redux-loading';
+
+import { getInitialData, saveQuestionAnswer } from '../utils/api';
+
+import { receiveUsers, userAnswer } from '../actions/users';
+import { setAuthedUser } from '../actions/authedUser';
+import { receiveQuestions, answerQuestion } from '../actions/questions';
 
 const AUTHED_ID = null;
 
@@ -17,4 +19,17 @@ export function handleInitialData () {
         dispatch(hideLoading());
       });
   };
+}
+
+export function handleAnswerQuestion (info) {
+  return (dispatch) => {
+    dispatch(answerQuestion(info));
+    dispatch(userAnswer(info));
+
+    return saveQuestionAnswer(info)
+      .catch((e) => {
+        console.warn('Error in handleAnswerQuestion: ', e);
+        alert('There was an error answering the question. Try again');
+      });
+  }
 }

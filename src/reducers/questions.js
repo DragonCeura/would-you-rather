@@ -11,8 +11,16 @@ export default function questions (state = {}, action) {
       // TODO: Handle adding a new question
       return state;
     case ANSWER_QUESTION :
-      // TODO: Handle answering a question
-      return state;
+      return {
+        ...state,
+        [action.qid]: {
+          ...state[action.qid],
+          [action.answer]: {
+            ...state[action.qid][action.answer],
+            votes: state[action.qid][action.answer].votes.concat([action.authedUser]),
+          }
+        }
+      };
     default :
       return state;
   }
