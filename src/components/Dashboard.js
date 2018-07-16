@@ -7,13 +7,8 @@ import QuestionsList from './QuestionsList';
 
 class Dashboard extends Component {
   render() {
-    console.log('dashboard props:', this.props);
     const { authedUser, users, questions } = this.props;
     const { answered, unanswered } = categorizeQuestions(authedUser, questions);
-
-    // TODO: Render all questions categorized as answered vs. unanswered.
-    console.log('Answered questions:', answered);
-    console.log('Unanswered questions:', unanswered);
 
     return (
       <div className='container'>

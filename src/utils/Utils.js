@@ -54,3 +54,19 @@ export function categorizeQuestions(authedUser, questions) {
     unanswered: questions.filter((question) => !userAnsweredQuestion(authedUser, question)),
   }
 }
+
+// Leaderboard helpers
+export function numQuestionsAnswered(user) {
+  return Object.values(user.answers).length;
+}
+
+export function numQuestionsAsked(user) {
+  return user.questions.length;
+}
+
+export function userScore(user) {
+  const questionsAnswered = numQuestionsAnswered(user);
+  const questionsAsked = numQuestionsAsked(user);
+
+  return questionsAnswered + questionsAsked;
+}
