@@ -12,7 +12,7 @@ class Leaderboard extends Component {
     const { usersArray } = this.props;
 
     return (
-      <div>
+      <div className='leaderboard'>
         <h3 className='center'>The Leaderboard</h3>
         {usersArray.map((user) => (
           <LeaderboardEntry key={user.id} user={user} />

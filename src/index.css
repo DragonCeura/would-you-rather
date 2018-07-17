@@ -117,3 +117,13 @@ li {
 .login-select {
   margin: 10px auto;
 }
+
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.leaderboard-entry {
+  display: flex;
+  flex-direction: row;
+}
