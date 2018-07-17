@@ -121,20 +121,21 @@ li {
 .leaderboard {
   display: flex;
   flex-direction: column;
+  max-width: 590px;
 }
 
 .leaderboard-header {
   display: flex;
   flex-direction: row;
+  border-bottom: 1px solid #dad7d7;
 }
 
 .leaderboard-entry {
   display: flex;
   flex-direction: row;
-}
-
-.leaderboard-entry.avatar {
-
+  border-top: 1px solid #dad7d7;
+  border-bottom: 1px solid #dad7d7;
+  margin: 10px 0px;
 }
 
 .leaderboard-avatar,
@@ -143,4 +144,9 @@ li {
 .leaderboard-score {
   min-width: 25%;
   text-align: center;
+  margin: auto;
+}
+
+.leaderboard-avatar {
+  margin: 20px;
 }

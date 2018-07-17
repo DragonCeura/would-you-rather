@@ -8,11 +8,13 @@ class LeaderboardEntry extends Component {
 
     return (
       <div className='leaderboard-entry'>
-        <img
-          src={user.avatarURL}
-          alt={`Avatar of ${user.name}`}
-          className='avatar leaderboard-avatar'
-        />
+        <div className='leaderboard-avatar'>
+          <img
+            src={user.avatarURL}
+            alt={`Avatar of ${user.name}`}
+            className='avatar'
+          />
+        </div>
         <div className='leaderboard-asked'>
           {numQuestionsAsked(user)}
         </div>
