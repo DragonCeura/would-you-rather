@@ -6,7 +6,7 @@ import { formatQuestion } from '../utils/Utils';
 class QuestionStats extends Component {
   render() {
     const { question } = this.props;
-    const { avatar, author, optionOne, optionOneVotes, optionTwo, optionTwoVotes, answer } = question;
+    const { optionOne, optionOneVotes, optionTwo, optionTwoVotes, answer } = question;
     const totalVotes = optionOneVotes + optionTwoVotes;
 
     return (

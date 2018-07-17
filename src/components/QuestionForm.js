@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { handleAnswerQuestion } from '../actions/shared';
 import { formatQuestion } from '../utils/Utils';
@@ -35,7 +35,7 @@ class QuestionForm extends Component {
   render() {
     const { selectedAnswer } = this.state;
     const { question, question_id } = this.props;
-    const { avatar, author, optionOne, optionTwo, answer } = question;
+    const { optionOne, optionTwo } = question;
     return (
       <form className='question-form' onSubmit={this.handleSubmit}>
         <label>
