@@ -1,30 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { categorizeQuestions } from '../utils/Utils';
-
 import QuestionsList from './QuestionsList';
 
 class Dashboard extends Component {
   render() {
-    const { authedUser, users, questions } = this.props;
-    const { answered, unanswered } = categorizeQuestions(authedUser, questions);
+    const { authedUser, users } = this.props;
 
     return (
       <div className='container'>
         <h3 className='center'>{users[authedUser].name}, would you rather...</h3>
-        <QuestionsList questionsArray={unanswered} header="Unanswered Questions" />
-        <QuestionsList questionsArray={answered} header="Answered Questions" />
+        <QuestionsList />
       </div>
     );
   }
 }
 
-function mapStateToProps ({ authedUser, users, questions }) {
+function mapStateToProps ({ authedUser, users }) {
   return {
     authedUser,
     users,
-    questions: Object.values(questions),
   }
 }
 

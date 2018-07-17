@@ -77,8 +77,13 @@ li {
 .questionlist {
   margin: 10px auto;
 }
+.questionlist-headers-container {
+  max-width: 590px;
+  margin: auto;
+}
 
 .questionlist-header {
+  width: 50%;
   max-width: 590px;
   margin: 15px auto;
 }
@@ -154,4 +159,8 @@ li {
 .new-question-form {
   display: flex;
   flex-direction: column;
+}
+
+.hide {
+  display: none;
 }
