@@ -150,3 +150,8 @@ li {
 .leaderboard-avatar {
   margin: 20px;
 }
+
+.new-question-form {
+  display: flex;
+  flex-direction: column;
+}

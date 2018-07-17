@@ -1,10 +1,10 @@
 import { showLoading, hideLoading } from 'react-redux-loading';
 
-import { getInitialData, saveQuestionAnswer } from '../utils/api';
+import { getInitialData, saveQuestionAnswer, saveQuestion } from '../utils/api';
 
-import { receiveUsers, userAnswer } from '../actions/users';
+import { receiveUsers, userAnswer, userQuestion } from '../actions/users';
 import { setAuthedUser } from '../actions/authedUser';
-import { receiveQuestions, answerQuestion } from '../actions/questions';
+import { receiveQuestions, answerQuestion, addQuestion } from '../actions/questions';
 
 const AUTHED_ID = null;
 
@@ -30,6 +30,28 @@ export function handleAnswerQuestion (info) {
       .catch((e) => {
         console.warn('Error in handleAnswerQuestion: ', e);
         alert('There was an error answering the question. Try again');
+      });
+  }
+}
+
+export function handleAddQuestion (optionOneText, optionTwoText) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+
+    dispatch(showLoading())
+    return saveQuestion({
+      optionOneText,
+      optionTwoText,
+      author: authedUser,
+    })
+      .then((question) => {
+        dispatch(addQuestion(question))
+        dispatch(userQuestion(question))
+      })
+      .then(() => dispatch(hideLoading()))
+      .catch((e) => {
+        console.warn('Error in handleAddQuestion', e);
+        alert('There was an error adding the question. Try again');
       });
   }
 }

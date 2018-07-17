@@ -8,8 +8,10 @@ export default function questions (state = {}, action) {
         ...action.questions
       }
     case ADD_QUESTION :
-      // TODO: Handle adding a new question
-      return state;
+      return {
+        ...state,
+        [action.question.id]: action.question,
+      };
     case ANSWER_QUESTION :
       return {
         ...state,
