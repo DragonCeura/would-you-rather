@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 import { handleAnswerQuestion } from '../actions/shared';
 import { formatQuestion } from '../utils/Utils';
@@ -39,6 +39,10 @@ class QuestionPage extends Component {
     const { selectedAnswer } = this.state;
 
     const { question, question_id } = this.props;
+
+    if (question === null) {
+      return (<Redirect to='/PageNotFound' />);
+    }
 
     const { avatar, author, optionOne, optionTwo, answer } = question;
 

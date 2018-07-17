@@ -5,7 +5,7 @@ export default function NoMatch() {
   return (
     <Fragment>
       <Link to='/'>
-        Page not found. Click here to go to Home, or navigate using the links above.
+        Page not found. Click here to go to your Dashboard, or navigate using the links above.
       </Link>
     </Fragment>
   )
