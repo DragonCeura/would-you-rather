@@ -10,22 +10,14 @@ class QuestionStats extends Component {
     const totalVotes = optionOneVotes + optionTwoVotes;
 
     return (
-      <div className='container'>
-        <h3>Asked by {author}</h3>
-        <img
-          src={avatar}
-          alt={`Avatar of ${author}`}
-          className='avatar'
-        />
-        <div className='question-info'>
-          <div>{optionOne}</div>
-          <div>or</div>
-          <div>{optionTwo}</div>
-          <h5>You Answered: {question[answer]}</h5>
-          <div className='question-stats'>
-            <div>"{optionOne}" received {optionOneVotes} of {totalVotes} votes ({(optionOneVotes / totalVotes) * 100}%)</div>
-            <div>"{optionTwo}" received {optionTwoVotes} of {totalVotes} votes ({(optionTwoVotes / totalVotes) * 100}%)</div>
-          </div>
+      <div className='question-info'>
+        <div>{optionOne}</div>
+        <div>or</div>
+        <div>{optionTwo}</div>
+        <h5>You Answered: {question[answer]}</h5>
+        <div className='question-stats'>
+          <div>"{optionOne}" received {optionOneVotes} of {totalVotes} votes ({(optionOneVotes / totalVotes) * 100}%)</div>
+          <div>"{optionTwo}" received {optionTwoVotes} of {totalVotes} votes ({(optionTwoVotes / totalVotes) * 100}%)</div>
         </div>
       </div>
     )
