@@ -26,20 +26,25 @@ class QuestionsList extends Component {
     const { authedUser, questions } = this.props;
     const { answered, unanswered } = categorizeQuestions(authedUser, questions);
     let hideUnanswered, hideAnswered;
+    let selectedUnanswered, selectedAnswered;
 
     if (show === UNANSWERED) {
       hideUnanswered = '';
+      selectedUnanswered = 'selected'
       hideAnswered = 'hide';
+      selectedAnswered = '';
     } else if (show === ANSWERED) {
       hideUnanswered = 'hide';
+      selectedUnanswered = ''
       hideAnswered = '';
+      selectedAnswered = 'selected';
     }
 
     return(
       <div className='questionlist'>
         <div className='questionlist-headers-container'>
           <button
-            className='btn questionlist-header'
+            className={`btn questionlist-header ${selectedUnanswered}`}
             value={UNANSWERED}
             onClick={this.changeLists}
             disabled={show === UNANSWERED}
@@ -47,7 +52,7 @@ class QuestionsList extends Component {
             Unanswered
           </button>
           <button
-            className='btn questionlist-header'
+            className={`btn questionlist-header ${selectedAnswered}`}
             value={ANSWERED}
             onClick={this.changeLists}
             disabled={show === ANSWERED}

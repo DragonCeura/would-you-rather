@@ -39,6 +39,11 @@ a {
   border-width: 2px;
 }
 
+.selected {
+  border: 3px solid;
+  color: blue;
+}
+
 .center {
   text-align: center;
 }
@@ -69,7 +74,7 @@ li {
 }
 
 .avatar {
-  height: 50px;
+  height: 100px;
   border-radius: 25px;
   margin: auto 20px;
 }
@@ -103,6 +108,7 @@ li {
   width: 100%;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .question-answer {
@@ -112,6 +118,21 @@ li {
 .question-form {
   display: flex;
   flex-direction: column;
+  margin: auto;
+}
+
+.question-form label {
+  margin: 10px 0px;
+}
+
+.questionpage {
+  max-width: 590px;
+  margin: auto;
+}
+
+.questionpage-info {
+  display: flex;
+  flex-direction: row;
 }
 
 .login-form {
@@ -127,6 +148,7 @@ li {
   display: flex;
   flex-direction: column;
   max-width: 590px;
+  margin: auto;
 }
 
 .leaderboard-header {
@@ -159,6 +181,10 @@ li {
 .new-question-form {
   display: flex;
   flex-direction: column;
+}
+
+.new-question-form label {
+  margin: 10px 0px;
 }
 
 .hide {

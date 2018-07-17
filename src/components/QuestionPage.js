@@ -21,15 +21,19 @@ class QuestionPage extends Component {
 
     return (
       <div className='container'>
-        <h3>Asked by {author}</h3>
-        <img
-          src={avatar}
-          alt={`Avatar of ${author}`}
-          className='avatar'
-        />
-        {answer === null
-          ? <QuestionForm question_id={question_id}/>
-          : <QuestionStats question_id={question_id} />}
+        <div className='questionpage'>
+          <h3>Asked by {author}</h3>
+          <div className='questionpage-info'>
+            <img
+              src={avatar}
+              alt={`Avatar of ${author}`}
+              className='avatar'
+            />
+            {answer === null
+              ? <QuestionForm question_id={question_id}/>
+              : <QuestionStats question_id={question_id} />}
+            </div>
+        </div>
       </div>
     );
   }

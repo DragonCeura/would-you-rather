@@ -8,6 +8,8 @@ class QuestionStats extends Component {
     const { question } = this.props;
     const { optionOne, optionOneVotes, optionTwo, optionTwoVotes, answer } = question;
     const totalVotes = optionOneVotes + optionTwoVotes;
+    const optionOnePercent = ((optionOneVotes / totalVotes) * 100).toFixed(2);
+    const optionTwoPercent = ((optionTwoVotes / totalVotes) * 100).toFixed(2);
 
     return (
       <div className='question-info'>
@@ -16,8 +18,8 @@ class QuestionStats extends Component {
         <div>{optionTwo}</div>
         <h5>You Answered: {question[answer]}</h5>
         <div className='question-stats'>
-          <div>"{optionOne}" received {optionOneVotes} of {totalVotes} votes ({(optionOneVotes / totalVotes) * 100}%)</div>
-          <div>"{optionTwo}" received {optionTwoVotes} of {totalVotes} votes ({(optionTwoVotes / totalVotes) * 100}%)</div>
+          <div>"{optionOne}" received {optionOneVotes} of {totalVotes} votes ({optionOnePercent}%)</div>
+          <div>"{optionTwo}" received {optionTwoVotes} of {totalVotes} votes ({optionTwoPercent}%)</div>
         </div>
       </div>
     )
