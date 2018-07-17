@@ -11,16 +11,16 @@ class LeaderboardEntry extends Component {
         <img
           src={user.avatarURL}
           alt={`Avatar of ${user.name}`}
-          className='avatar'
+          className='avatar leaderboard-avatar'
         />
-        <div className='leaderboard-score'>
-          {user.name} has a score of: {userScore(user)}.
-        </div>
         <div className='leaderboard-asked'>
-          {numQuestionsAsked(user)} questions asked.
+          {numQuestionsAsked(user)}
         </div>
         <div className='leaderboard-answered'>
-          {numQuestionsAnswered(user)} questions answered.
+          {numQuestionsAnswered(user)}
+        </div>
+        <div className='leaderboard-score'>
+          {userScore(user)}
         </div>
       </div>
     );

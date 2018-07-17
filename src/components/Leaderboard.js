@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { userScore } from '../utils/Utils';
 
 import LeaderboardEntry from './LeaderboardEntry';
+import LeaderboardHeader from './LeaderboardHeader';
 
 class Leaderboard extends Component {
   render() {
@@ -14,6 +15,7 @@ class Leaderboard extends Component {
     return (
       <div className='leaderboard'>
         <h3 className='center'>The Leaderboard</h3>
+        <LeaderboardHeader />
         {usersArray.map((user) => (
           <LeaderboardEntry key={user.id} user={user} />
         ))}

@@ -123,7 +123,24 @@ li {
   flex-direction: column;
 }
 
+.leaderboard-header {
+  display: flex;
+  flex-direction: row;
+}
+
 .leaderboard-entry {
   display: flex;
   flex-direction: row;
+}
+
+.leaderboard-entry.avatar {
+
+}
+
+.leaderboard-avatar,
+.leaderboard-asked,
+.leaderboard-answered,
+.leaderboard-score {
+  min-width: 25%;
+  text-align: center;
 }
