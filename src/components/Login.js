@@ -7,6 +7,7 @@ import { setAuthedUser } from '../actions/authedUser';
 class Login extends Component {
   state = {
     selectedUser: this.props.authedUser ? this.props.authedUser: '',
+    toHome: false,
   }
 
   handleSubmit = (e) => {
@@ -18,6 +19,7 @@ class Login extends Component {
 
     this.setState(() => ({
       selectedUser,
+      toHome: selectedUser === null ? false : true,
     }))
   }
 
@@ -29,11 +31,14 @@ class Login extends Component {
   }
 
   render() {
-    const { selectedUser } = this.state;
+    const { selectedUser, toHome } = this.state;
     const { authedUser, users, usersArray, location } = this.props;
-    const { from } = location.state || { from: { pathname: '/' } };
+    let { from } = location.state || { from: { pathname: location.pathname } };
 
-    if (authedUser) {
+    if (toHome === true && from.pathname === '/login') {
+      return <Redirect to='/' />
+    }
+    if (authedUser && from.pathname !== '/login') {
       return <Redirect to={ from } />
     }
 
