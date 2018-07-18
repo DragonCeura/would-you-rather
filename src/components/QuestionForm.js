@@ -38,6 +38,7 @@ class QuestionForm extends Component {
     const { optionOne, optionTwo } = question;
     return (
       <form className='question-form' onSubmit={this.handleSubmit}>
+        <h4>Would You Rather</h4>
         <label>
           <input
             type='radio'

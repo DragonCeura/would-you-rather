@@ -17,17 +17,17 @@ class Login extends Component {
     const { dispatch } = this.props;
     dispatch(setAuthedUser(selectedUser));
 
-    this.setState(() => ({
+    this.setState({
       selectedUser,
       toHome: selectedUser === null ? false : true,
-    }))
+    });
   }
 
-  handleSelectChange = (e) => {
+  handleSelectChange = e => {
     const selectedUser = e.target.value;
-    this.setState(() => ({
+    this.setState({
       selectedUser,
-    }))
+    });
   }
 
   render() {

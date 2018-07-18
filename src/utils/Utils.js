@@ -49,9 +49,13 @@ export function userAnsweredQuestion(user, question) {
 }
 
 export function categorizeQuestions(authedUser, questions) {
+  let answered = questions.filter((question) => userAnsweredQuestion(authedUser, question))
+    .sort((a, b) => b.timestamp - a.timestamp);
+  let unanswered = questions.filter((question) => !userAnsweredQuestion(authedUser, question))
+    .sort((a, b) => b.timestamp - a.timestamp);
   return {
-    answered: questions.filter((question) => userAnsweredQuestion(authedUser, question)),
-    unanswered: questions.filter((question) => !userAnsweredQuestion(authedUser, question)),
+    answered,
+    unanswered
   }
 }
 
