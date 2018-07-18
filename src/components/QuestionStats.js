@@ -13,6 +13,7 @@ class QuestionStats extends Component {
 
     return (
       <div className='question-info'>
+        <h4>Would You Rather</h4>
         <div>{optionOne}</div>
         <div>or</div>
         <div>{optionTwo}</div>
