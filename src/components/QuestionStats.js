@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { formatQuestion } from '../utils/Utils';
+import { formatQuestion, computeValues } from '../utils/Utils';
 
 class QuestionStats extends Component {
   render() {
     const { question } = this.props;
     const { optionOne, optionOneVotes, optionTwo, optionTwoVotes, answer } = question;
-    const totalVotes = optionOneVotes + optionTwoVotes;
-    const optionOnePercent = ((optionOneVotes / totalVotes) * 100).toFixed(2);
-    const optionTwoPercent = ((optionTwoVotes / totalVotes) * 100).toFixed(2);
+    const { optionOnePercent, optionTwoPercent, totalVotes } = computeValues(question);
 
     return (
       <div className='question-info'>
-        <h4>Would You Rather</h4>
         <div>{optionOne}</div>
         <div>or</div>
         <div>{optionTwo}</div>

@@ -20,7 +20,7 @@ import '../styles/App.css';
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    this.props.getInitialData();
   }
   render() {
     return (
@@ -48,11 +48,17 @@ class App extends Component {
 }
 
 // This assumes that there will always be at least one user initially available
-function mapStateToProps ({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users, questions }) {
   return {
     loading: Object.values(users).length === 0 || Object.values(questions).length === 0,
     authedUser,
   }
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    getInitialData: () => {dispatch(handleInitialData())}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

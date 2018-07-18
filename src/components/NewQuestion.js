@@ -20,12 +20,10 @@ class NewQuestion extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('NewQuestion.handleSubmit:', e);
-    // TODO: dispatch ADD_QUESTION
     const { optionOne, optionTwo } = this.state;
-    const { dispatch } = this.props;
+    const { dispatchAddQuestion } = this.props;
 
-    dispatch(handleAddQuestion(optionOne, optionTwo));
+    dispatchAddQuestion(optionOne, optionTwo);
 
     this.setState(() => ({
       optionOne: '',
@@ -36,7 +34,6 @@ class NewQuestion extends Component {
   render() {
     const { optionOne, optionTwo, toHome } = this.state;
 
-    console.log('NewQuestion toHome:', toHome);
     if (toHome === true) {
       return <Redirect to='/' />
     }
@@ -75,11 +72,17 @@ class NewQuestion extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser, users }) {
+function mapStateToProps({ authedUser, users }) {
   return {
     authedUser,
     users,
   }
 }
 
-export default connect(mapStateToProps)(NewQuestion);
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatchAddQuestion: (optionOne, optionTwo) => {dispatch(handleAddQuestion(optionOne, optionTwo))},
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewQuestion);

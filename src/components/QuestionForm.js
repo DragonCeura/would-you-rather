@@ -22,7 +22,7 @@ class QuestionForm extends Component {
     e.preventDefault();
 
     const { selectedAnswer } = this.state;
-    const { dispatch, authedUser, question_id } = this.props;
+    const { dispatchAnswerQuestion, authedUser, question_id } = this.props;
 
     const info = {
       authedUser,
@@ -30,7 +30,7 @@ class QuestionForm extends Component {
       answer: selectedAnswer,
     }
 
-    dispatch(handleAnswerQuestion(info));
+    dispatchAnswerQuestion(info);
   }
   render() {
     const { selectedAnswer } = this.state;
@@ -38,7 +38,6 @@ class QuestionForm extends Component {
     const { optionOne, optionTwo } = question;
     return (
       <form className='question-form' onSubmit={this.handleSubmit}>
-        <h4>Would You Rather</h4>
         <label>
           <input
             type='radio'
@@ -47,6 +46,9 @@ class QuestionForm extends Component {
             onChange={this.handleChange}
           />
           {optionOne}
+        </label>
+        <label>
+          OR
         </label>
         <label>
           <input
@@ -81,4 +83,10 @@ function mapStateToProps({ authedUser, users, questions }, props) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(QuestionForm));
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatchAnswerQuestion: (info) => {dispatch(handleAnswerQuestion(info))},
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QuestionForm));

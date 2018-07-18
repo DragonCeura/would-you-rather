@@ -15,9 +15,8 @@ class QuestionsList extends Component {
 
   changeLists = (e) => {
     e.preventDefault();
-    const show = e.target.value;
     this.setState({
-      show,
+      show: e.target.value,
     })
   }
 

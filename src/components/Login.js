@@ -14,8 +14,8 @@ class Login extends Component {
     e.preventDefault();
 
     const { selectedUser } = this.state;
-    const { dispatch } = this.props;
-    dispatch(setAuthedUser(selectedUser));
+    const { setAuthedUser } = this.props;
+    setAuthedUser(selectedUser);
 
     this.setState({
       selectedUser,
@@ -24,9 +24,8 @@ class Login extends Component {
   }
 
   handleSelectChange = e => {
-    const selectedUser = e.target.value;
     this.setState({
-      selectedUser,
+      selectedUser: e.target.value,
     });
   }
 
@@ -70,7 +69,7 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser, users }) {
+function mapStateToProps({ authedUser, users }) {
   return {
     authedUser,
     users,
@@ -78,4 +77,10 @@ function mapStateToProps ({ authedUser, users }) {
   }
 }
 
-export default connect(mapStateToProps)(Login);
+function mapDispatchToProps(dispatch) {
+  return {
+    setAuthedUser: (selectedUser) => {dispatch(setAuthedUser(selectedUser))},
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

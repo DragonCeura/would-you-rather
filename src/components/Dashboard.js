@@ -1,22 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import QuestionsList from './QuestionsList';
 
-class Dashboard extends Component {
-  render() {
-    const { authedUser, users } = this.props;
+const Dashboard = ({ authedUser, users }) => (
+  <div className='container'>
+    <h3 className='center'>{users[authedUser].name}, would you rather...</h3>
+    <QuestionsList />
+  </div>
+)
 
-    return (
-      <div className='container'>
-        <h3 className='center'>{users[authedUser].name}, would you rather...</h3>
-        <QuestionsList />
-      </div>
-    );
-  }
-}
-
-function mapStateToProps ({ authedUser, users }) {
+function mapStateToProps({ authedUser, users }) {
   return {
     authedUser,
     users,

@@ -29,10 +29,13 @@ class QuestionPage extends Component {
               alt={`Avatar of ${author}`}
               className='avatar'
             />
-            {answer === null
-              ? <QuestionForm question_id={question_id}/>
-              : <QuestionStats question_id={question_id} />}
+            <div className='questionpage-question center'>
+              <h4>Would You Rather</h4>
+              {answer === null
+                ? <QuestionForm question_id={question_id}/>
+                : <QuestionStats question_id={question_id} />}
             </div>
+          </div>
         </div>
       </div>
     );

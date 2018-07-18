@@ -6,10 +6,13 @@ class Nav extends Component {
   render() {
     const { authedUser, users } = this.props;
 
-    let loggedUser;
-    if (authedUser) {
-      loggedUser = ` (logged in as: ${users[authedUser].name})`;
-    }
+    const loggedUser = (() => {
+      if (authedUser) {
+        return `Switch User (logged in as: ${users[authedUser].name})`;
+      } else {
+        return `Select User`;
+      }
+    })();
 
     return (
       <nav className='nav'>
@@ -31,7 +34,7 @@ class Nav extends Component {
           </li>
           <li>
             <NavLink to='/login' activeClassName='active'>
-              Select User{loggedUser}
+              {loggedUser}
             </NavLink>
           </li>
         </ul>

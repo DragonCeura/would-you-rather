@@ -21,7 +21,7 @@ const PrivateRoute = ({ component: Component, authedUser = null, ...rest }) => (
   />
 );
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps ({ authedUser }) {
   return {
     authedUser
   }

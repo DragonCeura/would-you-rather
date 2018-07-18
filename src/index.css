@@ -130,6 +130,12 @@ li {
   margin: auto;
 }
 
+.questionpage-question {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .questionpage-info {
   display: flex;
   flex-direction: row;

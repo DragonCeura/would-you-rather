@@ -4,19 +4,27 @@ import { connect } from 'react-redux';
 import { userScore } from '../utils/Utils';
 
 import LeaderboardEntry from './LeaderboardEntry';
-import LeaderboardHeader from './LeaderboardHeader';
 
 class Leaderboard extends Component {
   render() {
-    console.log(this.props);
-
     const { usersArray } = this.props;
 
     return (
       <div className='container'>
         <h3 className='center'>The Leaderboard</h3>
         <div className='leaderboard'>
-          <LeaderboardHeader />
+          <div className='leaderboard-header'>
+            <div className='leaderboard-avatar' />
+            <div className='leaderboard-asked'>
+              Questions Asked
+            </div>
+            <div className='leaderboard-answered'>
+              Questions Answered
+            </div>
+            <div className='leaderboard-score'>
+              Score
+            </div>
+          </div>
           {usersArray.map((user) => (
             <LeaderboardEntry key={user.id} user={user} />
           ))}
@@ -26,7 +34,7 @@ class Leaderboard extends Component {
   }
 }
 
-function mapStateToProps ({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users, questions }) {
   return {
     authedUser,
     usersArray: Object.values(users).sort((a, b) => userScore(b) - userScore(a)),
