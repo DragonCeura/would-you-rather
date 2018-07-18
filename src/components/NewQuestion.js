@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { handleAddQuestion } from '../actions/shared';
 
 class NewQuestion extends Component {
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    users: PropTypes.object.isRequired,
+    dispatchAddQuestion: PropTypes.func.isRequired,
+  }
+
   state = {
     optionOne: '',
     optionTwo: '',
     toHome: false,
   }
+
   handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -18,6 +26,7 @@ class NewQuestion extends Component {
       [name]: value
     })
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { optionOne, optionTwo } = this.state;
@@ -31,6 +40,7 @@ class NewQuestion extends Component {
       toHome: true,
     }))
   }
+
   render() {
     const { optionOne, optionTwo, toHome } = this.state;
 

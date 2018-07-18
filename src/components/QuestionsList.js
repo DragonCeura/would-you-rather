@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { categorizeQuestions } from '../utils/Utils';
 
@@ -9,6 +10,11 @@ const UNANSWERED = 'UNANSWERED';
 const ANSWERED = 'ANSWERED';
 
 class QuestionsList extends Component {
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    questions: PropTypes.array.isRequired,
+  }
+
   state = {
     show: UNANSWERED,
   }

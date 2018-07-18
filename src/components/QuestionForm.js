@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { handleAnswerQuestion } from '../actions/shared';
 import { formatQuestion } from '../utils/Utils';
 
 class QuestionForm extends Component {
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    question: PropTypes.object,
+    question_id: PropTypes.string.isRequired,
+    dispatchAnswerQuestion: PropTypes.func.isRequired,
+  }
+
   state = {
     selectedAnswer: '',
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import QuestionsList from './QuestionsList';
 
@@ -9,6 +10,11 @@ const Dashboard = ({ authedUser, users }) => (
     <QuestionsList />
   </div>
 )
+
+Dashboard.propTypes = {
+  authedUser: PropTypes.string.isRequired,
+  users: PropTypes.object.isRequired,
+}
 
 function mapStateToProps({ authedUser, users }) {
   return {

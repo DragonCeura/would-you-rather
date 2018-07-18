@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    users: PropTypes.object.isRequired,
+    usersArray: PropTypes.array.isReuqired,
+    setAuthedUser: PropTypes.func.isRequired,
+  }
+
   state = {
     selectedUser: this.props.authedUser ? this.props.authedUser: '',
     toHome: false,

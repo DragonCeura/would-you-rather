@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
+import PropTypes from 'prop-types';
 
 // Components
 import Nav from './Nav';
@@ -19,6 +20,9 @@ import { handleInitialData } from '../actions/shared';
 import '../styles/App.css';
 
 class App extends Component {
+  static propTypes = {
+    getInitialData: PropTypes.func.isRequired
+  }
   componentDidMount() {
     this.props.getInitialData();
   }

@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { userScore } from '../utils/Utils';
 
 import LeaderboardEntry from './LeaderboardEntry';
 
 class Leaderboard extends Component {
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    usersArray: PropTypes.array.isRequired,
+    questions: PropTypes.object.isRequired,
+  }
   render() {
     const { usersArray } = this.props;
 
