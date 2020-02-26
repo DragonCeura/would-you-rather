@@ -9,7 +9,7 @@ class Login extends Component {
   static propTypes = {
     authedUser: PropTypes.string.isRequired,
     users: PropTypes.object.isRequired,
-    usersArray: PropTypes.array.isReuqired,
+    usersArray: PropTypes.array.isRequired,
     setAuthedUser: PropTypes.func.isRequired,
   }
 
